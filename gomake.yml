@@ -7,13 +7,13 @@ generate:
     - mkdir -p pkg/authv1 pkg/toolsv1 pkg/ragv1
     
     # Auth
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. auth/v1/auth.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto auth/v1/auth.proto
     
     # Tools
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. tools/v1/tools.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto tools/v1/tools.proto
     
     # Rag
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. rag/v1/rag.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto rag/v1/rag.proto
 
 build:
   doc: Generate and tidy

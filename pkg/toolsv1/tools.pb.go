@@ -4,6 +4,8 @@
 // 	protoc        v6.33.1
 // source: tools/v1/tools.proto
 
+// Automated generation trigger
+
 package toolsv1
 
 import (

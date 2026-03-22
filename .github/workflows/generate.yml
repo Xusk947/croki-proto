@@ -28,13 +28,19 @@ jobs:
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
           export PATH=$PATH:$(go env GOPATH)/bin
 
-      - name: Install GoMake
-        run: go install github.com/xusk947/gomake@latest
-
       - name: Generate Code
         run: |
           export PATH=$PATH:$(go env GOPATH)/bin
-          gomake run generate
+          mkdir -p pkg/authv1 pkg/toolsv1 pkg/ragv1
+          
+          # Auth
+          protoc --proto_path=. --proto_path=/usr/include --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto auth/v1/auth.proto
+          
+          # Tools
+          protoc --proto_path=. --proto_path=/usr/include --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto tools/v1/tools.proto
+          
+          # Rag
+          protoc --proto_path=. --proto_path=/usr/include --go_out=. --go_opt=module=github.com/xusk947/croki-proto --go-grpc_out=. --go-grpc_opt=module=github.com/xusk947/croki-proto rag/v1/rag.proto
 
       - name: Commit and Push
         run: |
