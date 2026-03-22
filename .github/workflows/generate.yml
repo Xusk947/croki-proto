@@ -1,0 +1,49 @@
+name: Generate Proto
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/v1/*.proto'
+      - 'gomake.yml'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.1'
+
+      - name: Install Protoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+          export PATH=$PATH:$(go env GOPATH)/bin
+
+      - name: Install GoMake
+        run: go install github.com/xusk947/gomake@latest
+
+      - name: Generate Code
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          gomake run generate
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pkg/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: auto-generate protobuf code [skip ci]"
+            git push origin main
+          fi
