@@ -1,11 +1,6 @@
-name: Generate Proto
-
 on:
   push:
     branches: [ main ]
-    paths:
-      - '**/v1/*.proto'
-      - 'gomake.yml'
 
 permissions:
   contents: write
