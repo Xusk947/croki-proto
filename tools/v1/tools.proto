@@ -1,4 +1,5 @@
 syntax = "proto3";
+// Automated generation trigger
 package tools.v1;
 
 option go_package = "github.com/xusk947/croki-proto/pkg/toolsv1;toolsv1";

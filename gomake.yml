@@ -7,13 +7,13 @@ generate:
     - mkdir -p pkg/authv1 pkg/toolsv1 pkg/ragv1
     
     # Auth
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. auth/v1/auth.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. auth/v1/auth.proto
     
     # Tools
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. tools/v1/tools.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. tools/v1/tools.proto
     
     # Rag
-    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. rag/v1/rag.proto
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=. --go-grpc_out=. rag/v1/rag.proto
 
 build:
   doc: Generate and tidy
