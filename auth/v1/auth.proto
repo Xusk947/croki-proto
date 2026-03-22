@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package croki.auth.v1;
+
+option go_package = "github.com/xusk947/croki-proto/pkg/authv1;authv1";
+
+import "google/protobuf/empty.proto";
+
+service AuthService {
+  rpc GetJWKS(google.protobuf.Empty) returns (GetJWKSResponse);
+  rpc GetSessionStatus(GetSessionStatusRequest) returns (GetSessionStatusResponse);
+}
+
+message GetJWKSResponse {
+  bytes jwks_json = 1;
+}
+
+message GetSessionStatusRequest {
+  string session_id = 1;
+  string user_id = 2;
+}
+
+message GetSessionStatusResponse {
+  bool active = 1;
+  string session_id = 2;
+  string user_id = 3;
+  string expires_at = 4;
+  string client_type = 5;
+}

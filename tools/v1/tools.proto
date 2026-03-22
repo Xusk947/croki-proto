@@ -1,0 +1,71 @@
+syntax = "proto3";
+package tools.v1;
+
+option go_package = "github.com/xusk947/croki-proto/pkg/toolsv1;toolsv1";
+
+service ToolService {
+  rpc ListTools(ListToolsRequest) returns (ListToolsResponse);
+  rpc Execute(ExecuteRequest) returns (ExecuteResponse);
+}
+
+message ListToolsRequest {}
+
+message ListToolsResponse {
+  repeated ToolDefinition tools = 1;
+}
+
+message ToolDefinition {
+  string name = 1;
+  string description = 2;
+  string parameters_schema_json = 3;
+  string usage = 4;
+  repeated string examples = 5;
+  repeated string aliases = 6;
+  string primary_parameter = 7;
+  repeated Parameter parameters = 8;
+}
+
+message Parameter {
+  string name = 1;
+  string description = 2;
+  string type = 3;
+  repeated string enum = 4;
+  bool required = 5;
+}
+
+message ExecuteRequest {
+  string tool_name = 1;
+  string args_json = 2;
+  ExecutionContext context = 3;
+  string content = 4; // current user message or related content
+}
+
+message ExecutionContext {
+  string session_id = 1;
+  oneof channel {
+    TelegramContext telegram = 2;
+    WebContext web = 3;
+  }
+  SystemContext system = 4;
+}
+
+message TelegramContext {
+  string user_id = 1;
+  string group_id = 2;
+  string thread_id = 3;
+}
+
+message WebContext {
+  string user_id = 1;
+}
+
+message SystemContext {
+  string device = 1;
+  string timezone = 2;
+  string locale = 3;
+}
+
+message ExecuteResponse {
+  string output_json = 1; // Tool result content as JSON (e.g. {"content": "...", "tool_name": "..."})
+  string error = 2; // Error message if execution failed
+}

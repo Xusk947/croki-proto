@@ -1,0 +1,22 @@
+vars:
+  PROTOC_INCLUDE: /usr/include
+---
+generate:
+  doc: Generate all Go protobuf and gRPC files
+  script:
+    - mkdir -p pkg/authv1 pkg/toolsv1 pkg/ragv1
+    
+    # Auth
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. auth/v1/auth.proto
+    
+    # Tools
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. tools/v1/tools.proto
+    
+    # Rag
+    - protoc --proto_path=. --proto_path={{ .Vars.PROTOC_INCLUDE }} --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. rag/v1/rag.proto
+
+build:
+  doc: Generate and tidy
+  script:
+    {{include "generate"}}
+    - go mod tidy

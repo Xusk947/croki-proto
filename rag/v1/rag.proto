@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package rag.v1;
+
+option go_package = "github.com/xusk947/croki-proto/pkg/ragv1;ragv1";
+
+service RagService {
+  rpc ExtractAndStoreMemory(ExtractAndStoreMemoryRequest) returns (ExtractAndStoreMemoryResponse) {}
+  rpc RetrieveContext(RetrieveContextRequest) returns (RetrieveContextResponse) {}
+}
+
+message ExtractAndStoreMemoryRequest {
+  string user_id = 1;
+  string session_id = 2;
+  string text_to_analyze = 3;
+}
+
+message ExtractAndStoreMemoryResponse {
+  bool success = 1;
+  int32 memories_created = 2;
+}
+
+message RetrieveContextRequest {
+  string user_id = 1;
+  string query_text = 2;
+  int32 limit = 3;
+}
+
+message MemoryItem {
+  string id = 1;
+  string memory_kind = 2;
+  string memory_scope = 3;
+  string content_text = 4;
+}
+
+message RetrieveContextResponse {
+  repeated MemoryItem memories = 1;
+}
