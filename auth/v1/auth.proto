@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package croki.auth.v1;
 
-option go_package = "github.com/xusk947/croki-proto/pkg/authv1;authv1";
+option go_package = "github.com/xusk947/croki-proto/pkg/auth/v1;authv1";
 
 import "google/protobuf/empty.proto";
 

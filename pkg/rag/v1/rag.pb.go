@@ -335,7 +335,7 @@ const file_rag_v1_rag_proto_rawDesc = "" +
 	"\n" +
 	"RagService\x12f\n" +
 	"\x15ExtractAndStoreMemory\x12$.rag.v1.ExtractAndStoreMemoryRequest\x1a%.rag.v1.ExtractAndStoreMemoryResponse\"\x00\x12T\n" +
-	"\x0fRetrieveContext\x12\x1e.rag.v1.RetrieveContextRequest\x1a\x1f.rag.v1.RetrieveContextResponse\"\x00B0Z.github.com/xusk947/croki-proto/pkg/ragv1;ragv1b\x06proto3"
+	"\x0fRetrieveContext\x12\x1e.rag.v1.RetrieveContextRequest\x1a\x1f.rag.v1.RetrieveContextResponse\"\x00B1Z/github.com/xusk947/croki-proto/pkg/rag/v1;ragv1b\x06proto3"
 
 var (
 	file_rag_v1_rag_proto_rawDescOnce sync.Once

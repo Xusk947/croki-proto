@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package rag.v1;
 
-option go_package = "github.com/xusk947/croki-proto/pkg/ragv1;ragv1";
+option go_package = "github.com/xusk947/croki-proto/pkg/rag/v1;ragv1";
 
 service RagService {
   rpc ExtractAndStoreMemory(ExtractAndStoreMemoryRequest) returns (ExtractAndStoreMemoryResponse) {}

@@ -715,7 +715,7 @@ const file_tools_v1_tools_proto_rawDesc = "" +
 	"\x05error\x18\x02 \x01(\tR\x05error2\x93\x01\n" +
 	"\vToolService\x12D\n" +
 	"\tListTools\x12\x1a.tools.v1.ListToolsRequest\x1a\x1b.tools.v1.ListToolsResponse\x12>\n" +
-	"\aExecute\x12\x18.tools.v1.ExecuteRequest\x1a\x19.tools.v1.ExecuteResponseB4Z2github.com/xusk947/croki-proto/pkg/toolsv1;toolsv1b\x06proto3"
+	"\aExecute\x12\x18.tools.v1.ExecuteRequest\x1a\x19.tools.v1.ExecuteResponseB5Z3github.com/xusk947/croki-proto/pkg/tools/v1;toolsv1b\x06proto3"
 
 var (
 	file_tools_v1_tools_proto_rawDescOnce sync.Once

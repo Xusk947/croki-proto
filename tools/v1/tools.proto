@@ -2,7 +2,7 @@ syntax = "proto3";
 // Automated generation trigger
 package tools.v1;
 
-option go_package = "github.com/xusk947/croki-proto/pkg/toolsv1;toolsv1";
+option go_package = "github.com/xusk947/croki-proto/pkg/tools/v1;toolsv1";
 
 service ToolService {
   rpc ListTools(ListToolsRequest) returns (ListToolsResponse);

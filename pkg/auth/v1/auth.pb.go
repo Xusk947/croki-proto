@@ -216,7 +216,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"clientType2\xb5\x01\n" +
 	"\vAuthService\x12A\n" +
 	"\aGetJWKS\x12\x16.google.protobuf.Empty\x1a\x1e.croki.auth.v1.GetJWKSResponse\x12c\n" +
-	"\x10GetSessionStatus\x12&.croki.auth.v1.GetSessionStatusRequest\x1a'.croki.auth.v1.GetSessionStatusResponseB2Z0github.com/xusk947/croki-proto/pkg/authv1;authv1b\x06proto3"
+	"\x10GetSessionStatus\x12&.croki.auth.v1.GetSessionStatusRequest\x1a'.croki.auth.v1.GetSessionStatusResponseB3Z1github.com/xusk947/croki-proto/pkg/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once
