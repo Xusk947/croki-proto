@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package agent.v1;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/xusk947/croki-proto/pkg/agent/v1";
+
+service AgentService {
+  rpc Respond(RespondRequest) returns (RespondResponse);
+}
+
+message RespondRequest {
+  string user_id = 1;
+  string channel_session_key = 2;
+  string content = 3;
+  string model = 4;
+  string client_request_id = 5;
+  string attachment_file_id = 6;
+  repeated string attachment_file_ids = 7;
+  google.protobuf.Struct metadata = 8;
+}
+
+message RespondResponse {
+  Message reply = 1;
+  repeated string reply_attachment_urls = 2;
+  google.protobuf.Struct usage = 3;
+}
+
+message Message {
+  string id = 1;
+  string role = 2;
+  string content = 3;
+  string content_text = 4;
+}

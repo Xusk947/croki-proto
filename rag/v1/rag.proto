@@ -13,6 +13,7 @@ message ExtractAndStoreMemoryRequest {
   string user_id = 1;
   string session_id = 2;
   string text_to_analyze = 3;
+  repeated MemoryItem existing_memories = 4;
 }
 
 message ExtractAndStoreMemoryResponse {
@@ -31,6 +32,7 @@ message MemoryItem {
   string memory_kind = 2;
   string memory_scope = 3;
   string content_text = 4;
+  string updated_at = 5;
 }
 
 message RetrieveContextResponse {
