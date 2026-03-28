@@ -7,8 +7,50 @@ option go_package = "github.com/xusk947/croki-proto/pkg/auth/v1;authv1";
 import "google/protobuf/empty.proto";
 
 service AuthService {
+  rpc LoginWithTelegram(LoginWithTelegramRequest) returns (LoginResponse);
+  rpc LoginWithGoogle(LoginWithGoogleRequest) returns (LoginResponse);
+  rpc RefreshSession(RefreshSessionRequest) returns (RefreshSessionResponse);
   rpc GetJWKS(google.protobuf.Empty) returns (GetJWKSResponse);
   rpc GetSessionStatus(GetSessionStatusRequest) returns (GetSessionStatusResponse);
+}
+
+message LoginWithTelegramRequest {
+  string init_data = 1;
+  string ip_address = 2;
+  string user_agent = 3;
+}
+
+message LoginWithGoogleRequest {
+  string id_token = 1;
+  string ip_address = 2;
+  string user_agent = 3;
+}
+
+message RefreshSessionRequest {
+  string refresh_token = 1;
+  string ip_address = 2;
+  string user_agent = 3;
+}
+
+message LoginResponse {
+  User user = 1;
+  Account account = 2;
+  Session session = 3;
+  string access_token = 4;
+  string access_token_expires_at = 5;
+  string refresh_token = 6;
+  string refresh_token_expires_at = 7;
+  string token_type = 8;
+  Telegram telegram = 9;
+}
+
+message RefreshSessionResponse {
+  Session session = 1;
+  string access_token = 2;
+  string access_token_expires_at = 3;
+  string refresh_token = 4;
+  string refresh_token_expires_at = 5;
+  string token_type = 6;
 }
 
 message GetJWKSResponse {
@@ -26,4 +68,70 @@ message GetSessionStatusResponse {
   string user_id = 3;
   string expires_at = 4;
   string client_type = 5;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string email_verified_at = 4;
+  string image = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+message Account {
+  string id = 1;
+  string account_id = 2;
+  string provider_id = 3;
+  string user_id = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message Session {
+  string id = 1;
+  string token = 2;
+  string user_id = 3;
+  string expires_at = 4;
+  string ip_address = 5;
+  string user_agent = 6;
+  string created_at = 7;
+  string updated_at = 8;
+}
+
+message Telegram {
+  string id = 1;
+  string account_id = 2;
+  int64 telegram_user_id = 3;
+  string username = 4;
+  string first_name = 5;
+  string last_name = 6;
+  string language_code = 7;
+  bool is_premium = 8;
+  bool allows_write_to_pm = 9;
+  string photo_url = 10;
+  string auth_date = 11;
+  string query_id = 12;
+  string start_param = 13;
+  int32 can_send_after = 14;
+  int64 chat_id = 15;
+  string chat_type = 16;
+  string chat_title = 17;
+  string chat_username = 18;
+  string chat_photo_url = 19;
+  string chat_instance = 20;
+  int64 receiver_id = 21;
+  string receiver_username = 22;
+  string receiver_first_name = 23;
+  string receiver_last_name = 24;
+  string receiver_language_code = 25;
+  bool receiver_is_premium = 26;
+  bool receiver_allows_write_to_pm = 27;
+  string receiver_photo_url = 28;
+  string hash = 29;
+  string signature = 30;
+  string raw_init_data = 31;
+  string created_at = 32;
+  string updated_at = 33;
 }
