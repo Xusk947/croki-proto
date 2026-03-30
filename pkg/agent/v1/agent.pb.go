@@ -22,6 +22,1511 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ToolRequestStatus int32
+
+const (
+	ToolRequestStatus_TOOL_REQUEST_STATUS_UNSPECIFIED      ToolRequestStatus = 0
+	ToolRequestStatus_TOOL_REQUEST_STATUS_PENDING_APPROVAL ToolRequestStatus = 1
+	ToolRequestStatus_TOOL_REQUEST_STATUS_APPROVED         ToolRequestStatus = 2
+	ToolRequestStatus_TOOL_REQUEST_STATUS_DENIED           ToolRequestStatus = 3
+	ToolRequestStatus_TOOL_REQUEST_STATUS_RUNNING          ToolRequestStatus = 4
+	ToolRequestStatus_TOOL_REQUEST_STATUS_DONE             ToolRequestStatus = 5
+	ToolRequestStatus_TOOL_REQUEST_STATUS_ERROR            ToolRequestStatus = 6
+)
+
+// Enum value maps for ToolRequestStatus.
+var (
+	ToolRequestStatus_name = map[int32]string{
+		0: "TOOL_REQUEST_STATUS_UNSPECIFIED",
+		1: "TOOL_REQUEST_STATUS_PENDING_APPROVAL",
+		2: "TOOL_REQUEST_STATUS_APPROVED",
+		3: "TOOL_REQUEST_STATUS_DENIED",
+		4: "TOOL_REQUEST_STATUS_RUNNING",
+		5: "TOOL_REQUEST_STATUS_DONE",
+		6: "TOOL_REQUEST_STATUS_ERROR",
+	}
+	ToolRequestStatus_value = map[string]int32{
+		"TOOL_REQUEST_STATUS_UNSPECIFIED":      0,
+		"TOOL_REQUEST_STATUS_PENDING_APPROVAL": 1,
+		"TOOL_REQUEST_STATUS_APPROVED":         2,
+		"TOOL_REQUEST_STATUS_DENIED":           3,
+		"TOOL_REQUEST_STATUS_RUNNING":          4,
+		"TOOL_REQUEST_STATUS_DONE":             5,
+		"TOOL_REQUEST_STATUS_ERROR":            6,
+	}
+)
+
+func (x ToolRequestStatus) Enum() *ToolRequestStatus {
+	p := new(ToolRequestStatus)
+	*p = x
+	return p
+}
+
+func (x ToolRequestStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ToolRequestStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_agent_v1_agent_proto_enumTypes[0].Descriptor()
+}
+
+func (ToolRequestStatus) Type() protoreflect.EnumType {
+	return &file_agent_v1_agent_proto_enumTypes[0]
+}
+
+func (x ToolRequestStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ToolRequestStatus.Descriptor instead.
+func (ToolRequestStatus) EnumDescriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{0}
+}
+
+type DesktopHello struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	UserId           string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	SessionId        string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	DeviceKey        string                 `protobuf:"bytes,3,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	DeviceName       string                 `protobuf:"bytes,4,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	McpServerEnabled bool                   `protobuf:"varint,5,opt,name=mcp_server_enabled,json=mcpServerEnabled,proto3" json:"mcp_server_enabled,omitempty"`
+	OsName           string                 `protobuf:"bytes,6,opt,name=os_name,json=osName,proto3" json:"os_name,omitempty"`
+	OsVersion        string                 `protobuf:"bytes,7,opt,name=os_version,json=osVersion,proto3" json:"os_version,omitempty"`
+	OsArch           string                 `protobuf:"bytes,8,opt,name=os_arch,json=osArch,proto3" json:"os_arch,omitempty"`
+	AppVersion       string                 `protobuf:"bytes,9,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *DesktopHello) Reset() {
+	*x = DesktopHello{}
+	mi := &file_agent_v1_agent_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopHello) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopHello) ProtoMessage() {}
+
+func (x *DesktopHello) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopHello.ProtoReflect.Descriptor instead.
+func (*DesktopHello) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *DesktopHello) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetSessionId() string {
+	if x != nil {
+		return x.SessionId
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetMcpServerEnabled() bool {
+	if x != nil {
+		return x.McpServerEnabled
+	}
+	return false
+}
+
+func (x *DesktopHello) GetOsName() string {
+	if x != nil {
+		return x.OsName
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetOsVersion() string {
+	if x != nil {
+		return x.OsVersion
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetOsArch() string {
+	if x != nil {
+		return x.OsArch
+	}
+	return ""
+}
+
+func (x *DesktopHello) GetAppVersion() string {
+	if x != nil {
+		return x.AppVersion
+	}
+	return ""
+}
+
+type DesktopClientHeartbeat struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UnixMs        int64                  `protobuf:"varint,1,opt,name=unix_ms,json=unixMs,proto3" json:"unix_ms,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopClientHeartbeat) Reset() {
+	*x = DesktopClientHeartbeat{}
+	mi := &file_agent_v1_agent_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopClientHeartbeat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopClientHeartbeat) ProtoMessage() {}
+
+func (x *DesktopClientHeartbeat) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopClientHeartbeat.ProtoReflect.Descriptor instead.
+func (*DesktopClientHeartbeat) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *DesktopClientHeartbeat) GetUnixMs() int64 {
+	if x != nil {
+		return x.UnixMs
+	}
+	return 0
+}
+
+type DesktopApprovalDecision struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolRequestId string                 `protobuf:"bytes,1,opt,name=tool_request_id,json=toolRequestId,proto3" json:"tool_request_id,omitempty"`
+	Approved      bool                   `protobuf:"varint,2,opt,name=approved,proto3" json:"approved,omitempty"`
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopApprovalDecision) Reset() {
+	*x = DesktopApprovalDecision{}
+	mi := &file_agent_v1_agent_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopApprovalDecision) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopApprovalDecision) ProtoMessage() {}
+
+func (x *DesktopApprovalDecision) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopApprovalDecision.ProtoReflect.Descriptor instead.
+func (*DesktopApprovalDecision) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DesktopApprovalDecision) GetToolRequestId() string {
+	if x != nil {
+		return x.ToolRequestId
+	}
+	return ""
+}
+
+func (x *DesktopApprovalDecision) GetApproved() bool {
+	if x != nil {
+		return x.Approved
+	}
+	return false
+}
+
+func (x *DesktopApprovalDecision) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type DesktopExecuteResult struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolRequestId string                 `protobuf:"bytes,1,opt,name=tool_request_id,json=toolRequestId,proto3" json:"tool_request_id,omitempty"`
+	OutputJson    string                 `protobuf:"bytes,2,opt,name=output_json,json=outputJson,proto3" json:"output_json,omitempty"`
+	Error         string                 `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopExecuteResult) Reset() {
+	*x = DesktopExecuteResult{}
+	mi := &file_agent_v1_agent_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopExecuteResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopExecuteResult) ProtoMessage() {}
+
+func (x *DesktopExecuteResult) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopExecuteResult.ProtoReflect.Descriptor instead.
+func (*DesktopExecuteResult) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DesktopExecuteResult) GetToolRequestId() string {
+	if x != nil {
+		return x.ToolRequestId
+	}
+	return ""
+}
+
+func (x *DesktopExecuteResult) GetOutputJson() string {
+	if x != nil {
+		return x.OutputJson
+	}
+	return ""
+}
+
+func (x *DesktopExecuteResult) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
+type DesktopClientMessage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Payload:
+	//
+	//	*DesktopClientMessage_Hello
+	//	*DesktopClientMessage_Heartbeat
+	//	*DesktopClientMessage_Approval
+	//	*DesktopClientMessage_ExecuteResult
+	Payload       isDesktopClientMessage_Payload `protobuf_oneof:"payload"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopClientMessage) Reset() {
+	*x = DesktopClientMessage{}
+	mi := &file_agent_v1_agent_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopClientMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopClientMessage) ProtoMessage() {}
+
+func (x *DesktopClientMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopClientMessage.ProtoReflect.Descriptor instead.
+func (*DesktopClientMessage) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DesktopClientMessage) GetPayload() isDesktopClientMessage_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *DesktopClientMessage) GetHello() *DesktopHello {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopClientMessage_Hello); ok {
+			return x.Hello
+		}
+	}
+	return nil
+}
+
+func (x *DesktopClientMessage) GetHeartbeat() *DesktopClientHeartbeat {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopClientMessage_Heartbeat); ok {
+			return x.Heartbeat
+		}
+	}
+	return nil
+}
+
+func (x *DesktopClientMessage) GetApproval() *DesktopApprovalDecision {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopClientMessage_Approval); ok {
+			return x.Approval
+		}
+	}
+	return nil
+}
+
+func (x *DesktopClientMessage) GetExecuteResult() *DesktopExecuteResult {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopClientMessage_ExecuteResult); ok {
+			return x.ExecuteResult
+		}
+	}
+	return nil
+}
+
+type isDesktopClientMessage_Payload interface {
+	isDesktopClientMessage_Payload()
+}
+
+type DesktopClientMessage_Hello struct {
+	Hello *DesktopHello `protobuf:"bytes,1,opt,name=hello,proto3,oneof"`
+}
+
+type DesktopClientMessage_Heartbeat struct {
+	Heartbeat *DesktopClientHeartbeat `protobuf:"bytes,2,opt,name=heartbeat,proto3,oneof"`
+}
+
+type DesktopClientMessage_Approval struct {
+	Approval *DesktopApprovalDecision `protobuf:"bytes,3,opt,name=approval,proto3,oneof"`
+}
+
+type DesktopClientMessage_ExecuteResult struct {
+	ExecuteResult *DesktopExecuteResult `protobuf:"bytes,4,opt,name=execute_result,json=executeResult,proto3,oneof"`
+}
+
+func (*DesktopClientMessage_Hello) isDesktopClientMessage_Payload() {}
+
+func (*DesktopClientMessage_Heartbeat) isDesktopClientMessage_Payload() {}
+
+func (*DesktopClientMessage_Approval) isDesktopClientMessage_Payload() {}
+
+func (*DesktopClientMessage_ExecuteResult) isDesktopClientMessage_Payload() {}
+
+type DesktopServerAck struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ConnectionId        string                 `protobuf:"bytes,1,opt,name=connection_id,json=connectionId,proto3" json:"connection_id,omitempty"`
+	HeartbeatIntervalMs int64                  `protobuf:"varint,2,opt,name=heartbeat_interval_ms,json=heartbeatIntervalMs,proto3" json:"heartbeat_interval_ms,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *DesktopServerAck) Reset() {
+	*x = DesktopServerAck{}
+	mi := &file_agent_v1_agent_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopServerAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopServerAck) ProtoMessage() {}
+
+func (x *DesktopServerAck) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopServerAck.ProtoReflect.Descriptor instead.
+func (*DesktopServerAck) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DesktopServerAck) GetConnectionId() string {
+	if x != nil {
+		return x.ConnectionId
+	}
+	return ""
+}
+
+func (x *DesktopServerAck) GetHeartbeatIntervalMs() int64 {
+	if x != nil {
+		return x.HeartbeatIntervalMs
+	}
+	return 0
+}
+
+type DesktopToolRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId           string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DeviceKey        string                 `protobuf:"bytes,3,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	ToolName         string                 `protobuf:"bytes,4,opt,name=tool_name,json=toolName,proto3" json:"tool_name,omitempty"`
+	ArgsJson         string                 `protobuf:"bytes,5,opt,name=args_json,json=argsJson,proto3" json:"args_json,omitempty"`
+	Content          string                 `protobuf:"bytes,6,opt,name=content,proto3" json:"content,omitempty"`
+	RequiresApproval bool                   `protobuf:"varint,7,opt,name=requires_approval,json=requiresApproval,proto3" json:"requires_approval,omitempty"`
+	Origin           string                 `protobuf:"bytes,8,opt,name=origin,proto3" json:"origin,omitempty"`
+	CreatedAt        string                 `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Status           ToolRequestStatus      `protobuf:"varint,10,opt,name=status,proto3,enum=agent.v1.ToolRequestStatus" json:"status,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *DesktopToolRequest) Reset() {
+	*x = DesktopToolRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopToolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopToolRequest) ProtoMessage() {}
+
+func (x *DesktopToolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopToolRequest.ProtoReflect.Descriptor instead.
+func (*DesktopToolRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DesktopToolRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetToolName() string {
+	if x != nil {
+		return x.ToolName
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetArgsJson() string {
+	if x != nil {
+		return x.ArgsJson
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetRequiresApproval() bool {
+	if x != nil {
+		return x.RequiresApproval
+	}
+	return false
+}
+
+func (x *DesktopToolRequest) GetOrigin() string {
+	if x != nil {
+		return x.Origin
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *DesktopToolRequest) GetStatus() ToolRequestStatus {
+	if x != nil {
+		return x.Status
+	}
+	return ToolRequestStatus_TOOL_REQUEST_STATUS_UNSPECIFIED
+}
+
+type DesktopExecute struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolRequestId string                 `protobuf:"bytes,1,opt,name=tool_request_id,json=toolRequestId,proto3" json:"tool_request_id,omitempty"`
+	ToolName      string                 `protobuf:"bytes,2,opt,name=tool_name,json=toolName,proto3" json:"tool_name,omitempty"`
+	ArgsJson      string                 `protobuf:"bytes,3,opt,name=args_json,json=argsJson,proto3" json:"args_json,omitempty"`
+	TimeoutMs     int64                  `protobuf:"varint,4,opt,name=timeout_ms,json=timeoutMs,proto3" json:"timeout_ms,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopExecute) Reset() {
+	*x = DesktopExecute{}
+	mi := &file_agent_v1_agent_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopExecute) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopExecute) ProtoMessage() {}
+
+func (x *DesktopExecute) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopExecute.ProtoReflect.Descriptor instead.
+func (*DesktopExecute) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DesktopExecute) GetToolRequestId() string {
+	if x != nil {
+		return x.ToolRequestId
+	}
+	return ""
+}
+
+func (x *DesktopExecute) GetToolName() string {
+	if x != nil {
+		return x.ToolName
+	}
+	return ""
+}
+
+func (x *DesktopExecute) GetArgsJson() string {
+	if x != nil {
+		return x.ArgsJson
+	}
+	return ""
+}
+
+func (x *DesktopExecute) GetTimeoutMs() int64 {
+	if x != nil {
+		return x.TimeoutMs
+	}
+	return 0
+}
+
+type DesktopServerHeartbeat struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UnixMs        int64                  `protobuf:"varint,1,opt,name=unix_ms,json=unixMs,proto3" json:"unix_ms,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopServerHeartbeat) Reset() {
+	*x = DesktopServerHeartbeat{}
+	mi := &file_agent_v1_agent_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopServerHeartbeat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopServerHeartbeat) ProtoMessage() {}
+
+func (x *DesktopServerHeartbeat) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopServerHeartbeat.ProtoReflect.Descriptor instead.
+func (*DesktopServerHeartbeat) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DesktopServerHeartbeat) GetUnixMs() int64 {
+	if x != nil {
+		return x.UnixMs
+	}
+	return 0
+}
+
+type DesktopServerMessage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Payload:
+	//
+	//	*DesktopServerMessage_Ack
+	//	*DesktopServerMessage_ToolRequest
+	//	*DesktopServerMessage_Execute
+	//	*DesktopServerMessage_Heartbeat
+	Payload       isDesktopServerMessage_Payload `protobuf_oneof:"payload"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DesktopServerMessage) Reset() {
+	*x = DesktopServerMessage{}
+	mi := &file_agent_v1_agent_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopServerMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopServerMessage) ProtoMessage() {}
+
+func (x *DesktopServerMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopServerMessage.ProtoReflect.Descriptor instead.
+func (*DesktopServerMessage) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DesktopServerMessage) GetPayload() isDesktopServerMessage_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *DesktopServerMessage) GetAck() *DesktopServerAck {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopServerMessage_Ack); ok {
+			return x.Ack
+		}
+	}
+	return nil
+}
+
+func (x *DesktopServerMessage) GetToolRequest() *DesktopToolRequest {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopServerMessage_ToolRequest); ok {
+			return x.ToolRequest
+		}
+	}
+	return nil
+}
+
+func (x *DesktopServerMessage) GetExecute() *DesktopExecute {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopServerMessage_Execute); ok {
+			return x.Execute
+		}
+	}
+	return nil
+}
+
+func (x *DesktopServerMessage) GetHeartbeat() *DesktopServerHeartbeat {
+	if x != nil {
+		if x, ok := x.Payload.(*DesktopServerMessage_Heartbeat); ok {
+			return x.Heartbeat
+		}
+	}
+	return nil
+}
+
+type isDesktopServerMessage_Payload interface {
+	isDesktopServerMessage_Payload()
+}
+
+type DesktopServerMessage_Ack struct {
+	Ack *DesktopServerAck `protobuf:"bytes,1,opt,name=ack,proto3,oneof"`
+}
+
+type DesktopServerMessage_ToolRequest struct {
+	ToolRequest *DesktopToolRequest `protobuf:"bytes,2,opt,name=tool_request,json=toolRequest,proto3,oneof"`
+}
+
+type DesktopServerMessage_Execute struct {
+	Execute *DesktopExecute `protobuf:"bytes,3,opt,name=execute,proto3,oneof"`
+}
+
+type DesktopServerMessage_Heartbeat struct {
+	Heartbeat *DesktopServerHeartbeat `protobuf:"bytes,4,opt,name=heartbeat,proto3,oneof"`
+}
+
+func (*DesktopServerMessage_Ack) isDesktopServerMessage_Payload() {}
+
+func (*DesktopServerMessage_ToolRequest) isDesktopServerMessage_Payload() {}
+
+func (*DesktopServerMessage_Execute) isDesktopServerMessage_Payload() {}
+
+func (*DesktopServerMessage_Heartbeat) isDesktopServerMessage_Payload() {}
+
+type CreateToolRequestRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	UserId           string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DeviceKey        string                 `protobuf:"bytes,2,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	ToolName         string                 `protobuf:"bytes,3,opt,name=tool_name,json=toolName,proto3" json:"tool_name,omitempty"`
+	ArgsJson         string                 `protobuf:"bytes,4,opt,name=args_json,json=argsJson,proto3" json:"args_json,omitempty"`
+	Content          string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
+	RequiresApproval bool                   `protobuf:"varint,6,opt,name=requires_approval,json=requiresApproval,proto3" json:"requires_approval,omitempty"`
+	Origin           string                 `protobuf:"bytes,7,opt,name=origin,proto3" json:"origin,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CreateToolRequestRequest) Reset() {
+	*x = CreateToolRequestRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateToolRequestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateToolRequestRequest) ProtoMessage() {}
+
+func (x *CreateToolRequestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateToolRequestRequest.ProtoReflect.Descriptor instead.
+func (*CreateToolRequestRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CreateToolRequestRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *CreateToolRequestRequest) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+func (x *CreateToolRequestRequest) GetToolName() string {
+	if x != nil {
+		return x.ToolName
+	}
+	return ""
+}
+
+func (x *CreateToolRequestRequest) GetArgsJson() string {
+	if x != nil {
+		return x.ArgsJson
+	}
+	return ""
+}
+
+func (x *CreateToolRequestRequest) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *CreateToolRequestRequest) GetRequiresApproval() bool {
+	if x != nil {
+		return x.RequiresApproval
+	}
+	return false
+}
+
+func (x *CreateToolRequestRequest) GetOrigin() string {
+	if x != nil {
+		return x.Origin
+	}
+	return ""
+}
+
+type CreateToolRequestResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolRequest   *DesktopToolRequest    `protobuf:"bytes,1,opt,name=tool_request,json=toolRequest,proto3" json:"tool_request,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateToolRequestResponse) Reset() {
+	*x = CreateToolRequestResponse{}
+	mi := &file_agent_v1_agent_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateToolRequestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateToolRequestResponse) ProtoMessage() {}
+
+func (x *CreateToolRequestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateToolRequestResponse.ProtoReflect.Descriptor instead.
+func (*CreateToolRequestResponse) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreateToolRequestResponse) GetToolRequest() *DesktopToolRequest {
+	if x != nil {
+		return x.ToolRequest
+	}
+	return nil
+}
+
+type ApproveToolRequestRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ToolRequestId string                 `protobuf:"bytes,2,opt,name=tool_request_id,json=toolRequestId,proto3" json:"tool_request_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ApproveToolRequestRequest) Reset() {
+	*x = ApproveToolRequestRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ApproveToolRequestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ApproveToolRequestRequest) ProtoMessage() {}
+
+func (x *ApproveToolRequestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ApproveToolRequestRequest.ProtoReflect.Descriptor instead.
+func (*ApproveToolRequestRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ApproveToolRequestRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ApproveToolRequestRequest) GetToolRequestId() string {
+	if x != nil {
+		return x.ToolRequestId
+	}
+	return ""
+}
+
+type DenyToolRequestRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ToolRequestId string                 `protobuf:"bytes,2,opt,name=tool_request_id,json=toolRequestId,proto3" json:"tool_request_id,omitempty"`
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DenyToolRequestRequest) Reset() {
+	*x = DenyToolRequestRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DenyToolRequestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DenyToolRequestRequest) ProtoMessage() {}
+
+func (x *DenyToolRequestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DenyToolRequestRequest.ProtoReflect.Descriptor instead.
+func (*DenyToolRequestRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DenyToolRequestRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *DenyToolRequestRequest) GetToolRequestId() string {
+	if x != nil {
+		return x.ToolRequestId
+	}
+	return ""
+}
+
+func (x *DenyToolRequestRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type ToolRequestResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ToolRequest   *DesktopToolRequest    `protobuf:"bytes,1,opt,name=tool_request,json=toolRequest,proto3" json:"tool_request,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ToolRequestResponse) Reset() {
+	*x = ToolRequestResponse{}
+	mi := &file_agent_v1_agent_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ToolRequestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ToolRequestResponse) ProtoMessage() {}
+
+func (x *ToolRequestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ToolRequestResponse.ProtoReflect.Descriptor instead.
+func (*ToolRequestResponse) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ToolRequestResponse) GetToolRequest() *DesktopToolRequest {
+	if x != nil {
+		return x.ToolRequest
+	}
+	return nil
+}
+
+type ListDevicesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDevicesRequest) Reset() {
+	*x = ListDevicesRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDevicesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDevicesRequest) ProtoMessage() {}
+
+func (x *ListDevicesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDevicesRequest.ProtoReflect.Descriptor instead.
+func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListDevicesRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type DesktopDevice struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	DeviceKey        string                 `protobuf:"bytes,1,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	DeviceName       string                 `protobuf:"bytes,2,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	McpServerEnabled bool                   `protobuf:"varint,3,opt,name=mcp_server_enabled,json=mcpServerEnabled,proto3" json:"mcp_server_enabled,omitempty"`
+	OsName           string                 `protobuf:"bytes,4,opt,name=os_name,json=osName,proto3" json:"os_name,omitempty"`
+	OsVersion        string                 `protobuf:"bytes,5,opt,name=os_version,json=osVersion,proto3" json:"os_version,omitempty"`
+	OsArch           string                 `protobuf:"bytes,6,opt,name=os_arch,json=osArch,proto3" json:"os_arch,omitempty"`
+	IsOnline         bool                   `protobuf:"varint,7,opt,name=is_online,json=isOnline,proto3" json:"is_online,omitempty"`
+	LastSeenAt       string                 `protobuf:"bytes,8,opt,name=last_seen_at,json=lastSeenAt,proto3" json:"last_seen_at,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *DesktopDevice) Reset() {
+	*x = DesktopDevice{}
+	mi := &file_agent_v1_agent_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DesktopDevice) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DesktopDevice) ProtoMessage() {}
+
+func (x *DesktopDevice) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DesktopDevice.ProtoReflect.Descriptor instead.
+func (*DesktopDevice) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DesktopDevice) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+func (x *DesktopDevice) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *DesktopDevice) GetMcpServerEnabled() bool {
+	if x != nil {
+		return x.McpServerEnabled
+	}
+	return false
+}
+
+func (x *DesktopDevice) GetOsName() string {
+	if x != nil {
+		return x.OsName
+	}
+	return ""
+}
+
+func (x *DesktopDevice) GetOsVersion() string {
+	if x != nil {
+		return x.OsVersion
+	}
+	return ""
+}
+
+func (x *DesktopDevice) GetOsArch() string {
+	if x != nil {
+		return x.OsArch
+	}
+	return ""
+}
+
+func (x *DesktopDevice) GetIsOnline() bool {
+	if x != nil {
+		return x.IsOnline
+	}
+	return false
+}
+
+func (x *DesktopDevice) GetLastSeenAt() string {
+	if x != nil {
+		return x.LastSeenAt
+	}
+	return ""
+}
+
+type ListDevicesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Devices       []*DesktopDevice       `protobuf:"bytes,1,rep,name=devices,proto3" json:"devices,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDevicesResponse) Reset() {
+	*x = ListDevicesResponse{}
+	mi := &file_agent_v1_agent_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDevicesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDevicesResponse) ProtoMessage() {}
+
+func (x *ListDevicesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDevicesResponse.ProtoReflect.Descriptor instead.
+func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ListDevicesResponse) GetDevices() []*DesktopDevice {
+	if x != nil {
+		return x.Devices
+	}
+	return nil
+}
+
+type GetDefaultDeviceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDefaultDeviceRequest) Reset() {
+	*x = GetDefaultDeviceRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDefaultDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDefaultDeviceRequest) ProtoMessage() {}
+
+func (x *GetDefaultDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDefaultDeviceRequest.ProtoReflect.Descriptor instead.
+func (*GetDefaultDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetDefaultDeviceRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type GetDefaultDeviceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeviceKey     string                 `protobuf:"bytes,1,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDefaultDeviceResponse) Reset() {
+	*x = GetDefaultDeviceResponse{}
+	mi := &file_agent_v1_agent_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDefaultDeviceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDefaultDeviceResponse) ProtoMessage() {}
+
+func (x *GetDefaultDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDefaultDeviceResponse.ProtoReflect.Descriptor instead.
+func (*GetDefaultDeviceResponse) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetDefaultDeviceResponse) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+type SetDefaultDeviceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DeviceKey     string                 `protobuf:"bytes,2,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetDefaultDeviceRequest) Reset() {
+	*x = SetDefaultDeviceRequest{}
+	mi := &file_agent_v1_agent_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetDefaultDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetDefaultDeviceRequest) ProtoMessage() {}
+
+func (x *SetDefaultDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetDefaultDeviceRequest.ProtoReflect.Descriptor instead.
+func (*SetDefaultDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *SetDefaultDeviceRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *SetDefaultDeviceRequest) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
+type SetDefaultDeviceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeviceKey     string                 `protobuf:"bytes,1,opt,name=device_key,json=deviceKey,proto3" json:"device_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetDefaultDeviceResponse) Reset() {
+	*x = SetDefaultDeviceResponse{}
+	mi := &file_agent_v1_agent_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetDefaultDeviceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetDefaultDeviceResponse) ProtoMessage() {}
+
+func (x *SetDefaultDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_v1_agent_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetDefaultDeviceResponse.ProtoReflect.Descriptor instead.
+func (*SetDefaultDeviceResponse) Descriptor() ([]byte, []int) {
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *SetDefaultDeviceResponse) GetDeviceKey() string {
+	if x != nil {
+		return x.DeviceKey
+	}
+	return ""
+}
+
 type RespondRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	UserId            string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -38,7 +1543,7 @@ type RespondRequest struct {
 
 func (x *RespondRequest) Reset() {
 	*x = RespondRequest{}
-	mi := &file_agent_v1_agent_proto_msgTypes[0]
+	mi := &file_agent_v1_agent_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -50,7 +1555,7 @@ func (x *RespondRequest) String() string {
 func (*RespondRequest) ProtoMessage() {}
 
 func (x *RespondRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_agent_v1_agent_proto_msgTypes[0]
+	mi := &file_agent_v1_agent_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +1568,7 @@ func (x *RespondRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RespondRequest.ProtoReflect.Descriptor instead.
 func (*RespondRequest) Descriptor() ([]byte, []int) {
-	return file_agent_v1_agent_proto_rawDescGZIP(), []int{0}
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *RespondRequest) GetUserId() string {
@@ -133,7 +1638,7 @@ type RespondResponse struct {
 
 func (x *RespondResponse) Reset() {
 	*x = RespondResponse{}
-	mi := &file_agent_v1_agent_proto_msgTypes[1]
+	mi := &file_agent_v1_agent_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -145,7 +1650,7 @@ func (x *RespondResponse) String() string {
 func (*RespondResponse) ProtoMessage() {}
 
 func (x *RespondResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_agent_v1_agent_proto_msgTypes[1]
+	mi := &file_agent_v1_agent_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -158,7 +1663,7 @@ func (x *RespondResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RespondResponse.ProtoReflect.Descriptor instead.
 func (*RespondResponse) Descriptor() ([]byte, []int) {
-	return file_agent_v1_agent_proto_rawDescGZIP(), []int{1}
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *RespondResponse) GetReply() *Message {
@@ -194,7 +1699,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_agent_v1_agent_proto_msgTypes[2]
+	mi := &file_agent_v1_agent_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -206,7 +1711,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_agent_v1_agent_proto_msgTypes[2]
+	mi := &file_agent_v1_agent_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,7 +1724,7 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_agent_v1_agent_proto_rawDescGZIP(), []int{2}
+	return file_agent_v1_agent_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Message) GetId() string {
@@ -254,7 +1759,119 @@ var File_agent_v1_agent_proto protoreflect.FileDescriptor
 
 const file_agent_v1_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x14agent/v1/agent.proto\x12\bagent.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xc8\x02\n" +
+	"\x14agent/v1/agent.proto\x12\bagent.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xa6\x02\n" +
+	"\fDesktopHello\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\tR\tsessionId\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x03 \x01(\tR\tdeviceKey\x12\x1f\n" +
+	"\vdevice_name\x18\x04 \x01(\tR\n" +
+	"deviceName\x12,\n" +
+	"\x12mcp_server_enabled\x18\x05 \x01(\bR\x10mcpServerEnabled\x12\x17\n" +
+	"\aos_name\x18\x06 \x01(\tR\x06osName\x12\x1d\n" +
+	"\n" +
+	"os_version\x18\a \x01(\tR\tosVersion\x12\x17\n" +
+	"\aos_arch\x18\b \x01(\tR\x06osArch\x12\x1f\n" +
+	"\vapp_version\x18\t \x01(\tR\n" +
+	"appVersion\"1\n" +
+	"\x16DesktopClientHeartbeat\x12\x17\n" +
+	"\aunix_ms\x18\x01 \x01(\x03R\x06unixMs\"u\n" +
+	"\x17DesktopApprovalDecision\x12&\n" +
+	"\x0ftool_request_id\x18\x01 \x01(\tR\rtoolRequestId\x12\x1a\n" +
+	"\bapproved\x18\x02 \x01(\bR\bapproved\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"u\n" +
+	"\x14DesktopExecuteResult\x12&\n" +
+	"\x0ftool_request_id\x18\x01 \x01(\tR\rtoolRequestId\x12\x1f\n" +
+	"\voutput_json\x18\x02 \x01(\tR\n" +
+	"outputJson\x12\x14\n" +
+	"\x05error\x18\x03 \x01(\tR\x05error\"\x9d\x02\n" +
+	"\x14DesktopClientMessage\x12.\n" +
+	"\x05hello\x18\x01 \x01(\v2\x16.agent.v1.DesktopHelloH\x00R\x05hello\x12@\n" +
+	"\theartbeat\x18\x02 \x01(\v2 .agent.v1.DesktopClientHeartbeatH\x00R\theartbeat\x12?\n" +
+	"\bapproval\x18\x03 \x01(\v2!.agent.v1.DesktopApprovalDecisionH\x00R\bapproval\x12G\n" +
+	"\x0eexecute_result\x18\x04 \x01(\v2\x1e.agent.v1.DesktopExecuteResultH\x00R\rexecuteResultB\t\n" +
+	"\apayload\"k\n" +
+	"\x10DesktopServerAck\x12#\n" +
+	"\rconnection_id\x18\x01 \x01(\tR\fconnectionId\x122\n" +
+	"\x15heartbeat_interval_ms\x18\x02 \x01(\x03R\x13heartbeatIntervalMs\"\xc9\x02\n" +
+	"\x12DesktopToolRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x03 \x01(\tR\tdeviceKey\x12\x1b\n" +
+	"\ttool_name\x18\x04 \x01(\tR\btoolName\x12\x1b\n" +
+	"\targs_json\x18\x05 \x01(\tR\bargsJson\x12\x18\n" +
+	"\acontent\x18\x06 \x01(\tR\acontent\x12+\n" +
+	"\x11requires_approval\x18\a \x01(\bR\x10requiresApproval\x12\x16\n" +
+	"\x06origin\x18\b \x01(\tR\x06origin\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\t \x01(\tR\tcreatedAt\x123\n" +
+	"\x06status\x18\n" +
+	" \x01(\x0e2\x1b.agent.v1.ToolRequestStatusR\x06status\"\x91\x01\n" +
+	"\x0eDesktopExecute\x12&\n" +
+	"\x0ftool_request_id\x18\x01 \x01(\tR\rtoolRequestId\x12\x1b\n" +
+	"\ttool_name\x18\x02 \x01(\tR\btoolName\x12\x1b\n" +
+	"\targs_json\x18\x03 \x01(\tR\bargsJson\x12\x1d\n" +
+	"\n" +
+	"timeout_ms\x18\x04 \x01(\x03R\ttimeoutMs\"1\n" +
+	"\x16DesktopServerHeartbeat\x12\x17\n" +
+	"\aunix_ms\x18\x01 \x01(\x03R\x06unixMs\"\x8c\x02\n" +
+	"\x14DesktopServerMessage\x12.\n" +
+	"\x03ack\x18\x01 \x01(\v2\x1a.agent.v1.DesktopServerAckH\x00R\x03ack\x12A\n" +
+	"\ftool_request\x18\x02 \x01(\v2\x1c.agent.v1.DesktopToolRequestH\x00R\vtoolRequest\x124\n" +
+	"\aexecute\x18\x03 \x01(\v2\x18.agent.v1.DesktopExecuteH\x00R\aexecute\x12@\n" +
+	"\theartbeat\x18\x04 \x01(\v2 .agent.v1.DesktopServerHeartbeatH\x00R\theartbeatB\t\n" +
+	"\apayload\"\xeb\x01\n" +
+	"\x18CreateToolRequestRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x02 \x01(\tR\tdeviceKey\x12\x1b\n" +
+	"\ttool_name\x18\x03 \x01(\tR\btoolName\x12\x1b\n" +
+	"\targs_json\x18\x04 \x01(\tR\bargsJson\x12\x18\n" +
+	"\acontent\x18\x05 \x01(\tR\acontent\x12+\n" +
+	"\x11requires_approval\x18\x06 \x01(\bR\x10requiresApproval\x12\x16\n" +
+	"\x06origin\x18\a \x01(\tR\x06origin\"\\\n" +
+	"\x19CreateToolRequestResponse\x12?\n" +
+	"\ftool_request\x18\x01 \x01(\v2\x1c.agent.v1.DesktopToolRequestR\vtoolRequest\"\\\n" +
+	"\x19ApproveToolRequestRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12&\n" +
+	"\x0ftool_request_id\x18\x02 \x01(\tR\rtoolRequestId\"q\n" +
+	"\x16DenyToolRequestRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12&\n" +
+	"\x0ftool_request_id\x18\x02 \x01(\tR\rtoolRequestId\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"V\n" +
+	"\x13ToolRequestResponse\x12?\n" +
+	"\ftool_request\x18\x01 \x01(\v2\x1c.agent.v1.DesktopToolRequestR\vtoolRequest\"-\n" +
+	"\x12ListDevicesRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x8d\x02\n" +
+	"\rDesktopDevice\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x01 \x01(\tR\tdeviceKey\x12\x1f\n" +
+	"\vdevice_name\x18\x02 \x01(\tR\n" +
+	"deviceName\x12,\n" +
+	"\x12mcp_server_enabled\x18\x03 \x01(\bR\x10mcpServerEnabled\x12\x17\n" +
+	"\aos_name\x18\x04 \x01(\tR\x06osName\x12\x1d\n" +
+	"\n" +
+	"os_version\x18\x05 \x01(\tR\tosVersion\x12\x17\n" +
+	"\aos_arch\x18\x06 \x01(\tR\x06osArch\x12\x1b\n" +
+	"\tis_online\x18\a \x01(\bR\bisOnline\x12 \n" +
+	"\flast_seen_at\x18\b \x01(\tR\n" +
+	"lastSeenAt\"H\n" +
+	"\x13ListDevicesResponse\x121\n" +
+	"\adevices\x18\x01 \x03(\v2\x17.agent.v1.DesktopDeviceR\adevices\"2\n" +
+	"\x17GetDefaultDeviceRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"9\n" +
+	"\x18GetDefaultDeviceResponse\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x01 \x01(\tR\tdeviceKey\"Q\n" +
+	"\x17SetDefaultDeviceRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x02 \x01(\tR\tdeviceKey\"9\n" +
+	"\x18SetDefaultDeviceResponse\x12\x1d\n" +
+	"\n" +
+	"device_key\x18\x01 \x01(\tR\tdeviceKey\"\xc8\x02\n" +
 	"\x0eRespondRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12.\n" +
 	"\x13channel_session_key\x18\x02 \x01(\tR\x11channelSessionKey\x12\x18\n" +
@@ -272,9 +1889,25 @@ const file_agent_v1_agent_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04role\x18\x02 \x01(\tR\x04role\x12\x18\n" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12!\n" +
-	"\fcontent_text\x18\x04 \x01(\tR\vcontentText2N\n" +
+	"\fcontent_text\x18\x04 \x01(\tR\vcontentText*\x82\x02\n" +
+	"\x11ToolRequestStatus\x12#\n" +
+	"\x1fTOOL_REQUEST_STATUS_UNSPECIFIED\x10\x00\x12(\n" +
+	"$TOOL_REQUEST_STATUS_PENDING_APPROVAL\x10\x01\x12 \n" +
+	"\x1cTOOL_REQUEST_STATUS_APPROVED\x10\x02\x12\x1e\n" +
+	"\x1aTOOL_REQUEST_STATUS_DENIED\x10\x03\x12\x1f\n" +
+	"\x1bTOOL_REQUEST_STATUS_RUNNING\x10\x04\x12\x1c\n" +
+	"\x18TOOL_REQUEST_STATUS_DONE\x10\x05\x12\x1d\n" +
+	"\x19TOOL_REQUEST_STATUS_ERROR\x10\x062N\n" +
 	"\fAgentService\x12>\n" +
-	"\aRespond\x12\x18.agent.v1.RespondRequest\x1a\x19.agent.v1.RespondResponseB-Z+github.com/xusk947/croki-proto/pkg/agent/v1b\x06proto3"
+	"\aRespond\x12\x18.agent.v1.RespondRequest\x1a\x19.agent.v1.RespondResponse2\xed\x04\n" +
+	"\x0eDesktopGateway\x12M\n" +
+	"\aConnect\x12\x1e.agent.v1.DesktopClientMessage\x1a\x1e.agent.v1.DesktopServerMessage(\x010\x01\x12\\\n" +
+	"\x11CreateToolRequest\x12\".agent.v1.CreateToolRequestRequest\x1a#.agent.v1.CreateToolRequestResponse\x12X\n" +
+	"\x12ApproveToolRequest\x12#.agent.v1.ApproveToolRequestRequest\x1a\x1d.agent.v1.ToolRequestResponse\x12R\n" +
+	"\x0fDenyToolRequest\x12 .agent.v1.DenyToolRequestRequest\x1a\x1d.agent.v1.ToolRequestResponse\x12J\n" +
+	"\vListDevices\x12\x1c.agent.v1.ListDevicesRequest\x1a\x1d.agent.v1.ListDevicesResponse\x12Y\n" +
+	"\x10GetDefaultDevice\x12!.agent.v1.GetDefaultDeviceRequest\x1a\".agent.v1.GetDefaultDeviceResponse\x12Y\n" +
+	"\x10SetDefaultDevice\x12!.agent.v1.SetDefaultDeviceRequest\x1a\".agent.v1.SetDefaultDeviceResponseB-Z+github.com/xusk947/croki-proto/pkg/agent/v1b\x06proto3"
 
 var (
 	file_agent_v1_agent_proto_rawDescOnce sync.Once
@@ -288,24 +1921,74 @@ func file_agent_v1_agent_proto_rawDescGZIP() []byte {
 	return file_agent_v1_agent_proto_rawDescData
 }
 
-var file_agent_v1_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_agent_v1_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_agent_v1_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_agent_v1_agent_proto_goTypes = []any{
-	(*RespondRequest)(nil),  // 0: agent.v1.RespondRequest
-	(*RespondResponse)(nil), // 1: agent.v1.RespondResponse
-	(*Message)(nil),         // 2: agent.v1.Message
-	(*structpb.Struct)(nil), // 3: google.protobuf.Struct
+	(ToolRequestStatus)(0),            // 0: agent.v1.ToolRequestStatus
+	(*DesktopHello)(nil),              // 1: agent.v1.DesktopHello
+	(*DesktopClientHeartbeat)(nil),    // 2: agent.v1.DesktopClientHeartbeat
+	(*DesktopApprovalDecision)(nil),   // 3: agent.v1.DesktopApprovalDecision
+	(*DesktopExecuteResult)(nil),      // 4: agent.v1.DesktopExecuteResult
+	(*DesktopClientMessage)(nil),      // 5: agent.v1.DesktopClientMessage
+	(*DesktopServerAck)(nil),          // 6: agent.v1.DesktopServerAck
+	(*DesktopToolRequest)(nil),        // 7: agent.v1.DesktopToolRequest
+	(*DesktopExecute)(nil),            // 8: agent.v1.DesktopExecute
+	(*DesktopServerHeartbeat)(nil),    // 9: agent.v1.DesktopServerHeartbeat
+	(*DesktopServerMessage)(nil),      // 10: agent.v1.DesktopServerMessage
+	(*CreateToolRequestRequest)(nil),  // 11: agent.v1.CreateToolRequestRequest
+	(*CreateToolRequestResponse)(nil), // 12: agent.v1.CreateToolRequestResponse
+	(*ApproveToolRequestRequest)(nil), // 13: agent.v1.ApproveToolRequestRequest
+	(*DenyToolRequestRequest)(nil),    // 14: agent.v1.DenyToolRequestRequest
+	(*ToolRequestResponse)(nil),       // 15: agent.v1.ToolRequestResponse
+	(*ListDevicesRequest)(nil),        // 16: agent.v1.ListDevicesRequest
+	(*DesktopDevice)(nil),             // 17: agent.v1.DesktopDevice
+	(*ListDevicesResponse)(nil),       // 18: agent.v1.ListDevicesResponse
+	(*GetDefaultDeviceRequest)(nil),   // 19: agent.v1.GetDefaultDeviceRequest
+	(*GetDefaultDeviceResponse)(nil),  // 20: agent.v1.GetDefaultDeviceResponse
+	(*SetDefaultDeviceRequest)(nil),   // 21: agent.v1.SetDefaultDeviceRequest
+	(*SetDefaultDeviceResponse)(nil),  // 22: agent.v1.SetDefaultDeviceResponse
+	(*RespondRequest)(nil),            // 23: agent.v1.RespondRequest
+	(*RespondResponse)(nil),           // 24: agent.v1.RespondResponse
+	(*Message)(nil),                   // 25: agent.v1.Message
+	(*structpb.Struct)(nil),           // 26: google.protobuf.Struct
 }
 var file_agent_v1_agent_proto_depIdxs = []int32{
-	3, // 0: agent.v1.RespondRequest.metadata:type_name -> google.protobuf.Struct
-	2, // 1: agent.v1.RespondResponse.reply:type_name -> agent.v1.Message
-	3, // 2: agent.v1.RespondResponse.usage:type_name -> google.protobuf.Struct
-	0, // 3: agent.v1.AgentService.Respond:input_type -> agent.v1.RespondRequest
-	1, // 4: agent.v1.AgentService.Respond:output_type -> agent.v1.RespondResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1,  // 0: agent.v1.DesktopClientMessage.hello:type_name -> agent.v1.DesktopHello
+	2,  // 1: agent.v1.DesktopClientMessage.heartbeat:type_name -> agent.v1.DesktopClientHeartbeat
+	3,  // 2: agent.v1.DesktopClientMessage.approval:type_name -> agent.v1.DesktopApprovalDecision
+	4,  // 3: agent.v1.DesktopClientMessage.execute_result:type_name -> agent.v1.DesktopExecuteResult
+	0,  // 4: agent.v1.DesktopToolRequest.status:type_name -> agent.v1.ToolRequestStatus
+	6,  // 5: agent.v1.DesktopServerMessage.ack:type_name -> agent.v1.DesktopServerAck
+	7,  // 6: agent.v1.DesktopServerMessage.tool_request:type_name -> agent.v1.DesktopToolRequest
+	8,  // 7: agent.v1.DesktopServerMessage.execute:type_name -> agent.v1.DesktopExecute
+	9,  // 8: agent.v1.DesktopServerMessage.heartbeat:type_name -> agent.v1.DesktopServerHeartbeat
+	7,  // 9: agent.v1.CreateToolRequestResponse.tool_request:type_name -> agent.v1.DesktopToolRequest
+	7,  // 10: agent.v1.ToolRequestResponse.tool_request:type_name -> agent.v1.DesktopToolRequest
+	17, // 11: agent.v1.ListDevicesResponse.devices:type_name -> agent.v1.DesktopDevice
+	26, // 12: agent.v1.RespondRequest.metadata:type_name -> google.protobuf.Struct
+	25, // 13: agent.v1.RespondResponse.reply:type_name -> agent.v1.Message
+	26, // 14: agent.v1.RespondResponse.usage:type_name -> google.protobuf.Struct
+	23, // 15: agent.v1.AgentService.Respond:input_type -> agent.v1.RespondRequest
+	5,  // 16: agent.v1.DesktopGateway.Connect:input_type -> agent.v1.DesktopClientMessage
+	11, // 17: agent.v1.DesktopGateway.CreateToolRequest:input_type -> agent.v1.CreateToolRequestRequest
+	13, // 18: agent.v1.DesktopGateway.ApproveToolRequest:input_type -> agent.v1.ApproveToolRequestRequest
+	14, // 19: agent.v1.DesktopGateway.DenyToolRequest:input_type -> agent.v1.DenyToolRequestRequest
+	16, // 20: agent.v1.DesktopGateway.ListDevices:input_type -> agent.v1.ListDevicesRequest
+	19, // 21: agent.v1.DesktopGateway.GetDefaultDevice:input_type -> agent.v1.GetDefaultDeviceRequest
+	21, // 22: agent.v1.DesktopGateway.SetDefaultDevice:input_type -> agent.v1.SetDefaultDeviceRequest
+	24, // 23: agent.v1.AgentService.Respond:output_type -> agent.v1.RespondResponse
+	10, // 24: agent.v1.DesktopGateway.Connect:output_type -> agent.v1.DesktopServerMessage
+	12, // 25: agent.v1.DesktopGateway.CreateToolRequest:output_type -> agent.v1.CreateToolRequestResponse
+	15, // 26: agent.v1.DesktopGateway.ApproveToolRequest:output_type -> agent.v1.ToolRequestResponse
+	15, // 27: agent.v1.DesktopGateway.DenyToolRequest:output_type -> agent.v1.ToolRequestResponse
+	18, // 28: agent.v1.DesktopGateway.ListDevices:output_type -> agent.v1.ListDevicesResponse
+	20, // 29: agent.v1.DesktopGateway.GetDefaultDevice:output_type -> agent.v1.GetDefaultDeviceResponse
+	22, // 30: agent.v1.DesktopGateway.SetDefaultDevice:output_type -> agent.v1.SetDefaultDeviceResponse
+	23, // [23:31] is the sub-list for method output_type
+	15, // [15:23] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_agent_v1_agent_proto_init() }
@@ -313,18 +1996,31 @@ func file_agent_v1_agent_proto_init() {
 	if File_agent_v1_agent_proto != nil {
 		return
 	}
+	file_agent_v1_agent_proto_msgTypes[4].OneofWrappers = []any{
+		(*DesktopClientMessage_Hello)(nil),
+		(*DesktopClientMessage_Heartbeat)(nil),
+		(*DesktopClientMessage_Approval)(nil),
+		(*DesktopClientMessage_ExecuteResult)(nil),
+	}
+	file_agent_v1_agent_proto_msgTypes[9].OneofWrappers = []any{
+		(*DesktopServerMessage_Ack)(nil),
+		(*DesktopServerMessage_ToolRequest)(nil),
+		(*DesktopServerMessage_Execute)(nil),
+		(*DesktopServerMessage_Heartbeat)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_agent_v1_agent_proto_rawDesc), len(file_agent_v1_agent_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   3,
+			NumEnums:      1,
+			NumMessages:   25,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_agent_v1_agent_proto_goTypes,
 		DependencyIndexes: file_agent_v1_agent_proto_depIdxs,
+		EnumInfos:         file_agent_v1_agent_proto_enumTypes,
 		MessageInfos:      file_agent_v1_agent_proto_msgTypes,
 	}.Build()
 	File_agent_v1_agent_proto = out.File

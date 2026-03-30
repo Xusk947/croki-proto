@@ -10,6 +10,166 @@ service AgentService {
   rpc Respond(RespondRequest) returns (RespondResponse);
 }
 
+enum ToolRequestStatus {
+  TOOL_REQUEST_STATUS_UNSPECIFIED = 0;
+  TOOL_REQUEST_STATUS_PENDING_APPROVAL = 1;
+  TOOL_REQUEST_STATUS_APPROVED = 2;
+  TOOL_REQUEST_STATUS_DENIED = 3;
+  TOOL_REQUEST_STATUS_RUNNING = 4;
+  TOOL_REQUEST_STATUS_DONE = 5;
+  TOOL_REQUEST_STATUS_ERROR = 6;
+}
+
+message DesktopHello {
+  string user_id = 1;
+  string session_id = 2;
+  string device_key = 3;
+  string device_name = 4;
+  bool mcp_server_enabled = 5;
+  string os_name = 6;
+  string os_version = 7;
+  string os_arch = 8;
+  string app_version = 9;
+}
+
+message DesktopClientHeartbeat {
+  int64 unix_ms = 1;
+}
+
+message DesktopApprovalDecision {
+  string tool_request_id = 1;
+  bool approved = 2;
+  string reason = 3;
+}
+
+message DesktopExecuteResult {
+  string tool_request_id = 1;
+  string output_json = 2;
+  string error = 3;
+}
+
+message DesktopClientMessage {
+  oneof payload {
+    DesktopHello hello = 1;
+    DesktopClientHeartbeat heartbeat = 2;
+    DesktopApprovalDecision approval = 3;
+    DesktopExecuteResult execute_result = 4;
+  }
+}
+
+message DesktopServerAck {
+  string connection_id = 1;
+  int64 heartbeat_interval_ms = 2;
+}
+
+message DesktopToolRequest {
+  string id = 1;
+  string user_id = 2;
+  string device_key = 3;
+  string tool_name = 4;
+  string args_json = 5;
+  string content = 6;
+  bool requires_approval = 7;
+  string origin = 8;
+  string created_at = 9;
+  ToolRequestStatus status = 10;
+}
+
+message DesktopExecute {
+  string tool_request_id = 1;
+  string tool_name = 2;
+  string args_json = 3;
+  int64 timeout_ms = 4;
+}
+
+message DesktopServerHeartbeat {
+  int64 unix_ms = 1;
+}
+
+message DesktopServerMessage {
+  oneof payload {
+    DesktopServerAck ack = 1;
+    DesktopToolRequest tool_request = 2;
+    DesktopExecute execute = 3;
+    DesktopServerHeartbeat heartbeat = 4;
+  }
+}
+
+message CreateToolRequestRequest {
+  string user_id = 1;
+  string device_key = 2;
+  string tool_name = 3;
+  string args_json = 4;
+  string content = 5;
+  bool requires_approval = 6;
+  string origin = 7;
+}
+
+message CreateToolRequestResponse {
+  DesktopToolRequest tool_request = 1;
+}
+
+message ApproveToolRequestRequest {
+  string user_id = 1;
+  string tool_request_id = 2;
+}
+
+message DenyToolRequestRequest {
+  string user_id = 1;
+  string tool_request_id = 2;
+  string reason = 3;
+}
+
+message ToolRequestResponse {
+  DesktopToolRequest tool_request = 1;
+}
+
+message ListDevicesRequest {
+  string user_id = 1;
+}
+
+message DesktopDevice {
+  string device_key = 1;
+  string device_name = 2;
+  bool mcp_server_enabled = 3;
+  string os_name = 4;
+  string os_version = 5;
+  string os_arch = 6;
+  bool is_online = 7;
+  string last_seen_at = 8;
+}
+
+message ListDevicesResponse {
+  repeated DesktopDevice devices = 1;
+}
+
+message GetDefaultDeviceRequest {
+  string user_id = 1;
+}
+
+message GetDefaultDeviceResponse {
+  string device_key = 1;
+}
+
+message SetDefaultDeviceRequest {
+  string user_id = 1;
+  string device_key = 2;
+}
+
+message SetDefaultDeviceResponse {
+  string device_key = 1;
+}
+
+service DesktopGateway {
+  rpc Connect(stream DesktopClientMessage) returns (stream DesktopServerMessage);
+  rpc CreateToolRequest(CreateToolRequestRequest) returns (CreateToolRequestResponse);
+  rpc ApproveToolRequest(ApproveToolRequestRequest) returns (ToolRequestResponse);
+  rpc DenyToolRequest(DenyToolRequestRequest) returns (ToolRequestResponse);
+  rpc ListDevices(ListDevicesRequest) returns (ListDevicesResponse);
+  rpc GetDefaultDevice(GetDefaultDeviceRequest) returns (GetDefaultDeviceResponse);
+  rpc SetDefaultDevice(SetDefaultDeviceRequest) returns (SetDefaultDeviceResponse);
+}
+
 message RespondRequest {
   string user_id = 1;
   string channel_session_key = 2;

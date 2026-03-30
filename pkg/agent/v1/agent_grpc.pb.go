@@ -119,3 +119,328 @@ var AgentService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "agent/v1/agent.proto",
 }
+
+const (
+	DesktopGateway_Connect_FullMethodName            = "/agent.v1.DesktopGateway/Connect"
+	DesktopGateway_CreateToolRequest_FullMethodName  = "/agent.v1.DesktopGateway/CreateToolRequest"
+	DesktopGateway_ApproveToolRequest_FullMethodName = "/agent.v1.DesktopGateway/ApproveToolRequest"
+	DesktopGateway_DenyToolRequest_FullMethodName    = "/agent.v1.DesktopGateway/DenyToolRequest"
+	DesktopGateway_ListDevices_FullMethodName        = "/agent.v1.DesktopGateway/ListDevices"
+	DesktopGateway_GetDefaultDevice_FullMethodName   = "/agent.v1.DesktopGateway/GetDefaultDevice"
+	DesktopGateway_SetDefaultDevice_FullMethodName   = "/agent.v1.DesktopGateway/SetDefaultDevice"
+)
+
+// DesktopGatewayClient is the client API for DesktopGateway service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type DesktopGatewayClient interface {
+	Connect(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[DesktopClientMessage, DesktopServerMessage], error)
+	CreateToolRequest(ctx context.Context, in *CreateToolRequestRequest, opts ...grpc.CallOption) (*CreateToolRequestResponse, error)
+	ApproveToolRequest(ctx context.Context, in *ApproveToolRequestRequest, opts ...grpc.CallOption) (*ToolRequestResponse, error)
+	DenyToolRequest(ctx context.Context, in *DenyToolRequestRequest, opts ...grpc.CallOption) (*ToolRequestResponse, error)
+	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
+	GetDefaultDevice(ctx context.Context, in *GetDefaultDeviceRequest, opts ...grpc.CallOption) (*GetDefaultDeviceResponse, error)
+	SetDefaultDevice(ctx context.Context, in *SetDefaultDeviceRequest, opts ...grpc.CallOption) (*SetDefaultDeviceResponse, error)
+}
+
+type desktopGatewayClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewDesktopGatewayClient(cc grpc.ClientConnInterface) DesktopGatewayClient {
+	return &desktopGatewayClient{cc}
+}
+
+func (c *desktopGatewayClient) Connect(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[DesktopClientMessage, DesktopServerMessage], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &DesktopGateway_ServiceDesc.Streams[0], DesktopGateway_Connect_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[DesktopClientMessage, DesktopServerMessage]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type DesktopGateway_ConnectClient = grpc.BidiStreamingClient[DesktopClientMessage, DesktopServerMessage]
+
+func (c *desktopGatewayClient) CreateToolRequest(ctx context.Context, in *CreateToolRequestRequest, opts ...grpc.CallOption) (*CreateToolRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateToolRequestResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_CreateToolRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *desktopGatewayClient) ApproveToolRequest(ctx context.Context, in *ApproveToolRequestRequest, opts ...grpc.CallOption) (*ToolRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ToolRequestResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_ApproveToolRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *desktopGatewayClient) DenyToolRequest(ctx context.Context, in *DenyToolRequestRequest, opts ...grpc.CallOption) (*ToolRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ToolRequestResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_DenyToolRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *desktopGatewayClient) ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDevicesResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_ListDevices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *desktopGatewayClient) GetDefaultDevice(ctx context.Context, in *GetDefaultDeviceRequest, opts ...grpc.CallOption) (*GetDefaultDeviceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDefaultDeviceResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_GetDefaultDevice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *desktopGatewayClient) SetDefaultDevice(ctx context.Context, in *SetDefaultDeviceRequest, opts ...grpc.CallOption) (*SetDefaultDeviceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetDefaultDeviceResponse)
+	err := c.cc.Invoke(ctx, DesktopGateway_SetDefaultDevice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// DesktopGatewayServer is the server API for DesktopGateway service.
+// All implementations must embed UnimplementedDesktopGatewayServer
+// for forward compatibility.
+type DesktopGatewayServer interface {
+	Connect(grpc.BidiStreamingServer[DesktopClientMessage, DesktopServerMessage]) error
+	CreateToolRequest(context.Context, *CreateToolRequestRequest) (*CreateToolRequestResponse, error)
+	ApproveToolRequest(context.Context, *ApproveToolRequestRequest) (*ToolRequestResponse, error)
+	DenyToolRequest(context.Context, *DenyToolRequestRequest) (*ToolRequestResponse, error)
+	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
+	GetDefaultDevice(context.Context, *GetDefaultDeviceRequest) (*GetDefaultDeviceResponse, error)
+	SetDefaultDevice(context.Context, *SetDefaultDeviceRequest) (*SetDefaultDeviceResponse, error)
+	mustEmbedUnimplementedDesktopGatewayServer()
+}
+
+// UnimplementedDesktopGatewayServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedDesktopGatewayServer struct{}
+
+func (UnimplementedDesktopGatewayServer) Connect(grpc.BidiStreamingServer[DesktopClientMessage, DesktopServerMessage]) error {
+	return status.Error(codes.Unimplemented, "method Connect not implemented")
+}
+func (UnimplementedDesktopGatewayServer) CreateToolRequest(context.Context, *CreateToolRequestRequest) (*CreateToolRequestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateToolRequest not implemented")
+}
+func (UnimplementedDesktopGatewayServer) ApproveToolRequest(context.Context, *ApproveToolRequestRequest) (*ToolRequestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ApproveToolRequest not implemented")
+}
+func (UnimplementedDesktopGatewayServer) DenyToolRequest(context.Context, *DenyToolRequestRequest) (*ToolRequestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DenyToolRequest not implemented")
+}
+func (UnimplementedDesktopGatewayServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListDevices not implemented")
+}
+func (UnimplementedDesktopGatewayServer) GetDefaultDevice(context.Context, *GetDefaultDeviceRequest) (*GetDefaultDeviceResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetDefaultDevice not implemented")
+}
+func (UnimplementedDesktopGatewayServer) SetDefaultDevice(context.Context, *SetDefaultDeviceRequest) (*SetDefaultDeviceResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetDefaultDevice not implemented")
+}
+func (UnimplementedDesktopGatewayServer) mustEmbedUnimplementedDesktopGatewayServer() {}
+func (UnimplementedDesktopGatewayServer) testEmbeddedByValue()                        {}
+
+// UnsafeDesktopGatewayServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to DesktopGatewayServer will
+// result in compilation errors.
+type UnsafeDesktopGatewayServer interface {
+	mustEmbedUnimplementedDesktopGatewayServer()
+}
+
+func RegisterDesktopGatewayServer(s grpc.ServiceRegistrar, srv DesktopGatewayServer) {
+	// If the following call panics, it indicates UnimplementedDesktopGatewayServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&DesktopGateway_ServiceDesc, srv)
+}
+
+func _DesktopGateway_Connect_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(DesktopGatewayServer).Connect(&grpc.GenericServerStream[DesktopClientMessage, DesktopServerMessage]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type DesktopGateway_ConnectServer = grpc.BidiStreamingServer[DesktopClientMessage, DesktopServerMessage]
+
+func _DesktopGateway_CreateToolRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateToolRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).CreateToolRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_CreateToolRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).CreateToolRequest(ctx, req.(*CreateToolRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DesktopGateway_ApproveToolRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApproveToolRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).ApproveToolRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_ApproveToolRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).ApproveToolRequest(ctx, req.(*ApproveToolRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DesktopGateway_DenyToolRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DenyToolRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).DenyToolRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_DenyToolRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).DenyToolRequest(ctx, req.(*DenyToolRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DesktopGateway_ListDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).ListDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_ListDevices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).ListDevices(ctx, req.(*ListDevicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DesktopGateway_GetDefaultDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDefaultDeviceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).GetDefaultDevice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_GetDefaultDevice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).GetDefaultDevice(ctx, req.(*GetDefaultDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DesktopGateway_SetDefaultDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetDefaultDeviceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DesktopGatewayServer).SetDefaultDevice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DesktopGateway_SetDefaultDevice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DesktopGatewayServer).SetDefaultDevice(ctx, req.(*SetDefaultDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// DesktopGateway_ServiceDesc is the grpc.ServiceDesc for DesktopGateway service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var DesktopGateway_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "agent.v1.DesktopGateway",
+	HandlerType: (*DesktopGatewayServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateToolRequest",
+			Handler:    _DesktopGateway_CreateToolRequest_Handler,
+		},
+		{
+			MethodName: "ApproveToolRequest",
+			Handler:    _DesktopGateway_ApproveToolRequest_Handler,
+		},
+		{
+			MethodName: "DenyToolRequest",
+			Handler:    _DesktopGateway_DenyToolRequest_Handler,
+		},
+		{
+			MethodName: "ListDevices",
+			Handler:    _DesktopGateway_ListDevices_Handler,
+		},
+		{
+			MethodName: "GetDefaultDevice",
+			Handler:    _DesktopGateway_GetDefaultDevice_Handler,
+		},
+		{
+			MethodName: "SetDefaultDevice",
+			Handler:    _DesktopGateway_SetDefaultDevice_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Connect",
+			Handler:       _DesktopGateway_Connect_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
+	Metadata: "agent/v1/agent.proto",
+}
